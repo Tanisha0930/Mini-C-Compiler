@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini C Compiler</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <h1>Mini C Compiler</h1>
+        <p>Write simple C code and click a button to see Lexer, AST, IR, or Semantic Analysis.</p>
+      </div>
+      <button id="themeToggleBtn" class="secondary" type="button">Toggle Theme</button>
+    </header>
+
+    <section class="card">
+      <label for="sampleSelect">Choose example code</label>
+      <div class="row">
+        <select id="sampleSelect">
+          <option value="basic">Basic Return</option>
+          <option value="math">Math Return</option>
+          <option value="variable">Variable Return</option>
+        </select>
+        <button id="loadSampleBtn" type="button">Load Example</button>
+        <button id="resetEditorBtn" class="secondary" type="button">Reset</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <label for="aiPrompt">AI Code Generator</label>
+      <p class="small-text">Type a simple idea like "return 25" or "add 40 and 2" and click Generate.</p>
+      <div class="row">
+        <input id="aiPrompt" type="text" placeholder="Example: create a C program that returns 42" />
+        <button id="generateAiBtn" type="button">Generate</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <label for="editor">C Code</label>
+      <div id="editor"></div>
+    </section>
+
+    <section class="card">
+      <div class="buttons">
+        <button id="runLexerBtn" type="button">Show Lexer</button>
+        <button id="runAstBtn" type="button">Show AST</button>
+        <button id="runIrBtn" type="button">Show IR</button>
+        <button id="runSemanticBtn" type="button">Show Semantic Analysis</button>
+      </div>
+
+      <button id="runAllBtn" class="primary" type="button">Run All</button>
+      <p id="statusText" class="status">Loading compiler...</p>
+    </section>
+
+    <section class="card">
+      <div class="tabs">
+        <button class="tab active" data-target="lexerOutput" type="button">Lexer</button>
+        <button class="tab" data-target="astOutput" type="button">AST</button>
+        <button class="tab" data-target="irOutput" type="button">IR</button>
+        <button class="tab" data-target="semanticOutput" type="button">Semantic Analysis</button>
+      </div>
+
+      <pre id="lexerOutput" class="output active">Lexer output will appear here.</pre>
+      <pre id="astOutput" class="output">AST output will appear here.</pre>
+      <pre id="irOutput" class="output">IR output will appear here.</pre>
+      <pre id="semanticOutput" class="output">Semantic analysis will appear here.</pre>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.1/min/vs/loader.min.js"></script>
+  <script src="clang-llvm-lld.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
